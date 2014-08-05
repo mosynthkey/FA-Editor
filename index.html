@@ -15,7 +15,7 @@
 <body>
 <script>initMIDI();</script>
 
-<h2>FA Editor</h2>
+<h2>FA Editor(SuperNATURAL Synth Tone Only)</h2>
     
     <div id="tabs">
         <ul>
@@ -204,7 +204,7 @@
                 document.getElementById("sns_1_amp_pan").innerHTML += ('<option value=' + (i + 64) + '>' + LCR + '</option>');
             }
             
-            // Partal 2,3を作成する
+            // Partial 2,3を作成する
             var panel = document.getElementById("tabs-p1").innerHTML;
             document.getElementById("tabs-p2").innerHTML = panel.replace(/sns_1_/g, "sns_2_");
             document.getElementById("tabs-p3").innerHTML = panel.replace(/sns_1_/g, "sns_3_");
