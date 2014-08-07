@@ -9,11 +9,59 @@
 	<link href="jquery-ui.css" rel="stylesheet">
     <script src="external/jquery/jquery.js"></script>
     <script src="jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $( "#button" ).button();
+            $( "#tabs" ).tabs();
+
+            // 警告表示を行う
+            $("#FA-06_detected").toggle();
+            $("#FA-08_detected").toggle();
+
+            // selectに内容を入れる
+            var select_0_127 = ["sns_1_osc_ssaw_detune", "sns_1_filter_cutoff", "sns_1_filter_res", "sns_1_filter_A", "sns_1_filter_D", "sns_1_filter_S", "sns_1_filter_R", "sns_1_amp_level", "sns_1_amp_A","sns_1_amp_D","sns_1_amp_S","sns_1_amp_R"];
+            select_0_127.forEach(function(name) {
+                opts = "";
+                for (var i = 0; i <= 127; i++) {
+                    opts += ('<option value=' + i + '>' + i + '</option>');
+                }
+                $("#" + name).html(opts);
+            });
+
+            opts = "";
+            for (var i = -63; i <= 63; i++) {
+                opts += ('<option value=' + (i + 64) + '>' + i + '</option>');
+            }
+            $("#sns_1_filter_depth").html(opts);
+
+            opts = "";
+            var LCR = "";
+            for (var i = -64; i <= 63; i++) {
+                if (i < 0) {
+                    LCR = "L" + (i * -1);
+                } else if (i == 0) {
+                    LCR = "C"
+                } else if (i > 0) {
+                    LCR = i.toString() + "R"
+                }
+                opts += ('<option value=' + (i + 64) + '>' + LCR + '</option>');
+            }
+            $("#sns_1_amp_pan").html(opts);
+
+            // Partial 2,3を作成する
+            var panel = $("#tabs-p1").html().toString();
+            $("#tabs-p2").html(panel.replace(/sns_1_/g, "sns_2_"));
+            $("#tabs-p3").html(panel.replace(/sns_1_/g, "sns_3_"));
+
+            // midiの初期化
+            initMIDI();
+        });
+    </script>
 </head>
 
 <!---------- body ---------->
 <body>
-<script>initMIDI();</script>
+<script></script>
 
 <h2>FA Editor(SuperNATURAL Synth Tone Only)</h2>
     
@@ -151,7 +199,7 @@
     </div>
 
     <div id="no_fa_detected">
-        <div class="ui-state-error ui-corner-all" style="margin-top: 10px; style="padding: 0 .7em;">
+        <div class="ui-state-error ui-corner-all" style="margin-top: 10px; padding: 0 .7em;">
             <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
             ブラウザでMIDIの使用を許可し、MIDI入出力両方にFA-06, FA-08を選択してください</p>
         </div>
@@ -172,47 +220,5 @@
     <div  style="margin-top: 10px;">
         <button style="float: right;" id="button" onClick="recieveAll()">Refresh</button>
     </div>
-
-    <script type="text/javascript">
-        window.onload = onload_;
-        function onload_()
-        {
-            // 警告表示を行う
-            document.getElementById("FA-06_detected").style.display = 'none';
-            document.getElementById("FA-08_detected").style.display = 'none';
-            
-            // selectに内容を入れる
-            var select_0_127 = ["sns_1_osc_ssaw_detune", "sns_1_filter_cutoff", "sns_1_filter_res", "sns_1_filter_A", "sns_1_filter_D", "sns_1_filter_S", "sns_1_filter_R", "sns_1_amp_level", "sns_1_amp_A","sns_1_amp_D","sns_1_amp_S","sns_1_amp_R"];
-            select_0_127.forEach(function(name) {
-                for (var i = 0; i <= 127; i++) {
-                    document.getElementById(name).innerHTML += ('<option value=' + i + '>' + i + '</option>');
-                }
-            });
-            for (var i = -63; i <= 63; i++) {
-                document.getElementById("sns_1_filter_depth").innerHTML += ('<option value=' + (i + 64) + '>' + i + '</option>');
-            }
-    
-            var LCR = "";
-            for (var i = -64; i <= 63; i++) {
-                if (i < 0) {
-                    LCR = "L" + (i * -1);
-                } else if (i == 0) {
-                    LCR = "C"
-                } else if (i > 0) {
-                    LCR = i.toString() + "R"
-                }
-                document.getElementById("sns_1_amp_pan").innerHTML += ('<option value=' + (i + 64) + '>' + LCR + '</option>');
-            }
-            
-            // Partial 2,3を作成する
-            var panel = document.getElementById("tabs-p1").innerHTML;
-            document.getElementById("tabs-p2").innerHTML = panel.replace(/sns_1_/g, "sns_2_");
-            document.getElementById("tabs-p3").innerHTML = panel.replace(/sns_1_/g, "sns_3_");
-        }
-    </script>
-    <script>
-        $( "#button" ).button();
-        $( "#tabs" ).tabs();
-</script>
 </body>
 </html>
