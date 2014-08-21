@@ -158,7 +158,7 @@ function onMIDIMessage(event)
 			 // Studio Set Commonあたりの変更
 			 for (var i = 11; i < e_data.length - 2; i++) {
 				studio_set_common_data[i - 11] = e_data[i]
-			}
+			} 
 			
 			// 入力ボックスのStudioSet名を更新する
 			 document.getElementById("studio_set_name").value = StringFromCharCodeArray(studio_set_common_data, 16).rtrim();
@@ -185,6 +185,7 @@ function onMIDIMessage(event)
 					}
 				}
 			   
+			   document.getElementById("sns_c_waveshape").innerHTML = "Wave Shape: " + sn_synth_tone_common_data[0x35].toString();
 				
 			} else if (0x20 <= e_data[9] && e_data[9] <= 0x22) {
 				// Partial e_data[9] - 0x1f
