@@ -1,0 +1,25 @@
+00, c, ipt1
+0c, knb_127
+12
+13, knb_127
+14
+15, knb1, -3, 3
+16, knb1, 0, 24
+17, knb1, 0, 24
+18, slct1, NORMAL, CATCH+LAST
+19
+1a
+1b
+1c
+1d
+1e
+1f, chk2
+20
+2e 
+31, slct1, NORMAL, LEGATO
+32
+34, knb_127
+36, slct1, No Assign,Ac.Piano,Pop Piano,E.GrandPiano, E.Piano1,E.Piano2,E.Organ,Pipe Organ,Reed Organ, Harpsichord,Clav,Celesta, Accordion,Harmonica,Bell, Mallet,Ac.Guitar,E.Guitar, Dist.Guitar,Ac.Bass,E.Bass, Synth Bass,Plucked/Stroke, Solo Strings,Ens.Strings, Orhestral,Solo Brass,Ens. Brass,Wind,Flute,Sax, Recorder,Vox/Choir,Scat, Synth Lead,Synth Brass, Synth Pad/Str,Synth Bellpad, Synth PolyKey,Synth FX, Synth Seq/Pop,Phrase, Pulsating,Beat&Groove, Hit,Sound FX,Drums, Percussion,Stack,Zone
+37, 4, 
+3b, knb_pos
+3c, knb_us
