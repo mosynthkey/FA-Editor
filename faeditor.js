@@ -1,7 +1,7 @@
 var midiAccess = null;
-var inputs = null;
+var inputs = new Array();
 var input = null;
-var outputs = null;
+var outputs = new Array();
 var output = null;
 var input_device = 0;
 var output_device = 0;
@@ -76,20 +76,37 @@ function initMIDI()
 		// MIDIデバイスが使用可能
 		midiAccess = midi;
 		if (midiAccess != null) {
+			if (typeof midiAccess.inputs == 'function') {
+			// For Old Chrome
+				inputs = midiAccess.inputs();
+				outputs = midiAccess.outputs();
+			} else {
+			// For New Chrome
+				var it = midiAccess.inputs.values();
+				for (var o = it.next(); !o.done; o = it.next()) {
+					inputs.push(o.value);
+				}
+				var it = midiAccess.outputs.values();
+				for (var o = it.next(); !o.done; o = it.next()) {
+					outputs.push(o.value);
+				}
+			}
 
-			outputs = midiAccess.outputs();
-			inputs = midiAccess.inputs();
-
+			var opts = $("#midiout_select").html();
 			if(outputs.length > 0){
 				for (var i = 0; i < outputs.length; i++) {
-					document.getElementById("midiout_select").innerHTML += ('<option value=' + i + '>' + outputs[i].name + '</option>');
+					opts += ('<option value=' + i + '>' + outputs[i].name + '</option>');
 				}
 			}
+			$("#midiout_select").html(opts);
+
+			opts = $("#midiin_select").html();
 			if(inputs.length > 0){
 				for (var i = 0; i < inputs.length; i++) {
-					document.getElementById("midiin_select").innerHTML += ('<option value=' + i + '>' + inputs[i].name + '</option>');
+					opts += ('<option value=' + i + '>' + inputs[i].name + '</option>');
 				}
 			}
+			$("#midiin_select").html(opts);
 		}
 	}), (function() {
 		alert( "MIDIが使えません。" );
