@@ -4,13 +4,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>FA Editor</title>
-    
+
 	<script type="text/javascript" src="faeditor.js"></script>
 	<link href="jquery-ui.css" rel="stylesheet">
     <script src="external/jquery/jquery.js"></script>
     <script src="jquery-ui.js"></script>
     <script>
         $(function() {
+						alert("Test");
             $( "#button" ).button();
             $( "#tabs" ).tabs();
 
@@ -64,7 +65,7 @@
 <script></script>
 
 <h2>FA Editor(SuperNATURAL Synth Tone Only)</h2>
-    
+
     <div id="tabs">
         <ul>
             <li><a href="#tabs-midi">MIDI Settings</a></li>
@@ -76,14 +77,14 @@
         </ul>
         <div id="tabs-midi">
             <!-- MIDI IN -->
-            <p>Input: 
+            <p>Input:
                 <select id="midiin_select" onChange="onMidiInChange(this);">
                     <option value="0">No Device
                 </select>
             </p>
 
             <!-- MIDI OUT -->
-            <p>Output: 
+            <p>Output:
                 <select id="midiout_select" onChange="onMidiOutChange(this);">
                     <option value="0">No Device
                 </select>
@@ -116,7 +117,7 @@
                         <input type="checkbox" id="sns_1_partial_onoff" value="1" onChange='onSnsPartialChange(this, "common")'>
                     </td>
                     <td>
-                        <p>Type: 
+                        <p>Type:
                             <select id="sns_1_osc_type" onChange='onSnsPartialChange(this, "sns_1_")'>
                                 <option value=0>SAW</option>
                                 <option value=1>SQR</option>
@@ -129,7 +130,7 @@
                             </select>
                         </p>
                         <div id="sns_1_osc_std">
-                            <p>Variation: 
+                            <p>Variation:
                                 <select id="sns_1_osc_var" onChange='onSnsPartialChange(this, "sns_1_")'>
                                     <option value=0>A</option>
                                     <option value=1>B</option>
@@ -138,56 +139,56 @@
                             </p>
                         </div>
                         <div id="sns_1_osc_ssaw">
-                            <p>Super Saw Detune: 
+                            <p>Super Saw Detune:
                                 <select id="sns_1_osc_ssaw_detune" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                             </p>
                         </div>
                         <div id="sns_1_osc_pcm">
-                            <p>Wave Number: 
+                            <p>Wave Number:
                                 <input id="sns_1_osc_pcm_wavenumber" onChange='onSnsPartialChange(this, "sns_1_")'>
                             </p>
                         </div>
                     </td>
 
                     <td>
-                        <p>CUTOFF: 
+                        <p>CUTOFF:
                             <select id="sns_1_filter_cutoff" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>RESONANCE: 
+                        <p>RESONANCE:
                             <select id="sns_1_filter_res" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>A: 
+                        <p>A:
                             <select id="sns_1_filter_A" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>D: 
+                        <p>D:
                             <select id="sns_1_filter_D" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>S: 
+                        <p>S:
                             <select id="sns_1_filter_S" onChange='onSnsPartialChange(this, "sns_1_")'></select>
-                        <p>R: 
+                        <p>R:
                             <select id="sns_1_filter_R" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>DEPTH: 
+                        <p>DEPTH:
                             <select id="sns_1_filter_depth" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
                     </td>
 
                     <td>
-                        <p>PAN: 
+                        <p>PAN:
                             <select id="sns_1_amp_pan" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>LEVEL: 
+                        <p>LEVEL:
                             <select id="sns_1_amp_level" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>A: 
+                        <p>A:
                             <select id="sns_1_amp_A" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>D: 
+                        <p>D:
                             <select id="sns_1_amp_D" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
-                        <p>S: 
+                        <p>S:
                             <select id="sns_1_amp_S" onChange='onSnsPartialChange(this, "sns_1_")'></select>
-                        <p>R: 
+                        <p>R:
                             <select id="sns_1_amp_R" onChange='onSnsPartialChange(this, "sns_1_")'></select>
                         </p>
                     </td>
@@ -217,7 +218,7 @@
             FA-08が認識されました</p>
         </div>
     </div>
-    
+
     <div  style="margin-top: 10px;">
         <button style="float: right;" id="button" onClick="recieveAll()">Refresh</button>
     </div>
